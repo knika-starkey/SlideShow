@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img id="slider" src="images/f1.jpg" />
+    <button onclick="back()">&lt;</button>
+    <button onclick="stop()">&#9632;</button>
+    <button onclick="start()">&#9658;</button>
+    <button onclick="next()">&gt;</button>
+
+    <script>
+      let arr_src = [
+        "images/f1.jpg",
+        "images/f2.jpg",
+        "images/f3.jpg",
+        "images/f4.jpg",
+        "images/f5.jpg",
+        "images/f6.jpg",
+        "images/f7.jpg",
+        "images/f8.jpg",
+        "images/f9.jpg",
+        "images/f10.jpg",
+        "images/f11.jpg",
+        "images/f12.jpg",
+      ]; // массив путей к картинкам
+      let i = 0; // счетчик
+      let slider = document.getElementById("slider");
+      let timerId;
+      function next() {
+        if (i < arr_src.length - 1) i++;
+        else i = 0;
+        slider.setAttribute("src", arr_src[i]);
+        let timerId;
+      }
+      function back() {
+        if (i == 0) i = arr_src.length;
+        i--;
+
+        slider.setAttribute("src", arr_src[i]);
+      }
+      function start() {
+        timerId = setInterval(function () {
+          next();
+        }, 3000);
+      }
+      function stop() {
+        clearInterval(timerId);
+      }
+    </script>
+  </body>
+</html>
